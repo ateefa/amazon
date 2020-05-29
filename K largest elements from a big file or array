@@ -1,0 +1,23 @@
+# 1.sort and then print elements from kth index
+
+l.sort(reversed=True)
+for i in range(k,n):
+  print(l[i])
+  
+# 2.make a max heap and extract max k times
+from heapq import heappush,heappop,heapify
+heap=[]
+#insert
+heapify(heap)           #O(log(n))
+# extract k times
+for i in range(k):
+  print(heappop(heap))  #O(1)
+  heapify(heap)         #O(n)
+  #............................ O(k*(log(n))
+ 
+ 
+ # 3.Quicksort
+ # find kth biggest element partision along it and print(randomised algorithm) O(n)
+ # print ArrB
+ 
+ 
