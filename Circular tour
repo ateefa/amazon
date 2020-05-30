@@ -1,0 +1,22 @@
+
+for t in range(int(input())):
+	n=int(input())
+	d=list(map(int,input().split()))
+	for start in range(0,2*n,2):
+		petrol=0
+		dist=0
+		flag=True
+		for i in range(start,start+2*n,2):
+			petrol+=d[start%(2*n)]
+			dist+=d[(start+1)%(2*n)]
+			if(petrol<dist):
+				flag=False
+			else:
+				petrol-=dist
+				dist=0
+		if flag==True:
+			print(start//2)
+			break			
+	else:
+		print(-1)	
+
