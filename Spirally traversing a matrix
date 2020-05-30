@@ -1,0 +1,62 @@
+# divide in four parts
+# go right->down->left-up
+n,m=4, 4
+l=[[1, 2, 3 ,4],
+  [5, 6, 7, 8],
+  [9, 10 ,11, 12],
+  [13, 14 ,15 ,16]]
+i=0;j=0;r=0;t=0;c=0
+while(c<m*n):
+	while(j<m):
+		print(l[i][j],end=' ')
+		j+=1
+	m-=1
+	j=m
+	i+=1
+	while(i<n):
+		print(l[i][j],end=' ')
+		i+=1
+	n-=1
+	i=n
+	j-=1
+	while(j>r):
+		print(l[i][j],end=' ')	
+		j-=1
+	r+=1
+	while(i>t):	
+		print(l[i][j],end=' ')
+		i-=1
+	t+=1	
+	c+=m
+print()		
+
+
+# 	if(count%2==0):
+# 		if(j<lmax):
+# 			while(j<lmax):
+# 				print(l[i][j],end=' ')
+# 				j+=1
+# 			i=tmin+1
+# 			j=lmax-1		
+# 		else:		
+# 			while(j>lmin):
+# 				print(l[i][j],end=' ')
+# 				j-=1
+# 			i=tmax-1
+# 			j=lmin-1	
+# 	else:
+# 		if(i<tmax):
+# 			while(i<tmax):
+# 				print(l[i][j],end=' ')
+# 				i+=1
+# 			i=tmax-1
+# 			j=lmax-1	
+# 		else:		
+# 			while(i>lmin):
+# 				print(l[i][j],end=' ')
+# 				i-=1
+# 	count+=1
+# 	tmin+=1;tmax-=1;lmin+=1;lmax-=1		
+
+# print()		
+
