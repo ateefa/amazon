@@ -1,0 +1,31 @@
+for t in range(int(input())):
+	s=input()
+	l=[]
+	flag=True
+	if len(s)%2==1:
+		flag=False
+
+	for i in s:
+		if i in '{[(':
+			l.append(i)
+		else:
+			if i=='}' and l[-1]!='{':
+				flag=False
+				break
+			elif i==']' and l[-1]!='[':
+				flag=False
+				break
+			elif i==')' and l[-1]!='(':
+				flag=False	
+				break
+			else:
+				l.pop()	
+	if flag==False or l!=[]:
+		print("unbalanced")	
+	else:
+		print("balanced")			
+# 4
+# {([])}
+# ()
+# ([]
+# [()]{}{[()()]()}
