@@ -1,0 +1,4 @@
+# make a queue
+add root
+start a while loop till queue is not empty and add left child if not none and right if not none
+pop and print
