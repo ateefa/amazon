@@ -1,0 +1,65 @@
+# a circular linked list
+# insert,delete,print,returnHead
+class Node:
+	def __init__(self,val):
+		self.val=val
+		self.next=None
+	
+
+class LinkedList:
+	def __init__(self):
+		self.head=None
+
+	def insert(self,val):
+		if self.head==None:
+			self.head = Node(val)
+			self.head.next=self.head
+			return self.head
+
+		elif self.head.next==self.head:
+			if(self.head.val<val):
+				self.head.next = Node(val)
+				self.head.next.next = self.head
+			else:
+				copy=self.head
+				self.head=Node(val)
+				self.head.next=copy
+				copy.next=self.head	
+		else:
+			newNode=Node(val)
+			if(val<self.head.val):
+				newNode.next=self.head
+				temp=self.head.next
+				while(temp!=self.head):
+					prev=temp
+					temp=temp.next
+				prev.next=newNode
+				self.head=newNode
+			else:	
+				temp=self.head.next
+				while(temp.val<val and temp!=self.head):
+					prev=temp
+					temp=temp.next
+				newNode.next=prev.next
+				prev.next=newNode
+
+
+	def printList(self):
+		temp=self.head.next
+		print(self.head.val)
+		while(temp!=self.head):
+			print(temp.val)	
+			temp=temp.next	
+
+
+cll=LinkedList()
+cll.insert(7)
+cll.insert(8)
+cll.insert(9)
+cll.insert(2)
+cll.printList()
+
+
+
+
+
