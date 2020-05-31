@@ -1,0 +1,99 @@
+
+#SUM to root
+
+# class Node:
+# 	def __init__(self, data):
+# 		self.key = data  
+# 		self.left = None
+# 		self.right = None
+
+# def Sum(root):
+# 	if root==None:
+# 		return 0
+# 	if root.left!=None:
+# 		l=Sum(root.left)
+# 	else:
+# 		l=0	
+# 	if root.right!=None:
+# 		r=Sum(root.right)		
+# 	else:
+# 		r=0
+# 	root.key=root.key+l+r
+# 	return root.key		
+
+# # def addSmallerUtil(root, Sum):  
+# #     if root == None:  
+# #         return
+# #     addSmallerUtil(root.left, Sum)  
+# #     Sum[0] = Sum[0] + root.key   
+# #     root.key = Sum[0]  
+# #     addSmallerUtil(root.right, Sum) 
+# # def addSmaller(root): 
+# #     Sum = [0]  
+# #     addSmallerUtil(root, Sum) 
+
+# def printInorder(node): 
+#     if node == None:  
+#         return
+#     printInorder(node.left)  
+#     print(node.key, end = " ") 
+#     printInorder(node.right)
+
+# root = Node(9)  
+# root.left = Node(6)
+# root.right = Node(15)
+# root.left.left = Node(2)
+# root.left.right = Node(7)
+# root.right.left = Node(10)
+# print("BST To Binary Tree")
+# printInorder(root)  
+# print()
+# Sum(root)
+# printInorder(root)
+# print()
+
+
+# Sum to greater side
+# More like inorder traversal
+
+class Node: 
+	def __init__(self, data): 
+		self.key = data 
+		self.left = None
+		self.right = None 
+def addSmallerUtil(root, Sum): 
+	if root == None: 
+		return
+	addSmallerUtil(root.left, Sum) 
+
+	Sum[0] = Sum[0] + root.key 
+ 
+	root.key = Sum[0] 
+
+	addSmallerUtil(root.right, Sum) 
+
+def addSmaller(root): 
+	Sum = [0] 
+	addSmallerUtil(root, Sum) 
+
+def printInorder(node): 
+	if node == None: 
+		return
+	printInorder(node.left) 
+	print(node.key, end = " ") 
+	printInorder(node.right) 
+
+if __name__ == '__main__': 
+
+	root = Node(9) 
+	root.left = Node(6) 
+	root.right = Node(15) 
+
+	print("Original BST") 
+	printInorder(root) 
+	print() 
+	addSmaller(root) 
+
+	print("BST To Binary Tree") 
+	printInorder(root) 
+
