@@ -1,0 +1,143 @@
+# class Node:
+# 	def __init__(self,val):
+# 		self.prev=None
+# 		self.val=val
+# 		self.next=None
+
+# class DLinkedList:
+# 	def __init__(self):
+# 		self.head=None
+
+# 	def insertbeg(self,val):
+# 		if self.head==None:
+# 			self.head=Node(val)
+# 		else:
+# 			newNode=Node(val)
+# 			newNode.next=self.head
+# 			self.head.prev=newNode
+# 			self.head=newNode
+
+# 	def reverse(self):
+# 		newDll=None
+# 		curr=self.head
+# 		while(curr!=None):
+# 			newDll=curr.prev
+# 			curr.prev=curr.next
+# 			curr.next=newDll
+# 			curr=curr.prev
+# 		if newDll is not None:
+# 			self.head = newDll.prev 
+				
+
+# 	def printNode(self):
+# 		copy=self.head
+# 		while(copy!=None):
+# 			print(copy.val)
+# 			copy=copy.next
+
+# dll=DLinkedList()
+# dll.insertbeg(2)
+# dll.insertbeg(3)
+# dll.insertbeg(4)
+# dll.printNode()
+# print("REVERSED : ")
+# dll.reverse()
+# dll.printNode()
+
+# Python program to convert 
+# binary tree to doubly linked list 
+
+class Node(object): 
+	
+	"""Binary tree Node class has 
+	data, left and right child"""
+	def __init__(self, item): 
+		self.data = item 
+		self.left = None
+		self.right = None
+
+def BTToDLLUtil(root): 
+	
+	"""This is a utility function to 
+	convert the binary tree to doubly 
+	linked list. Most of the core task 
+	is done by this function."""
+	if root is None: 
+		return root 
+
+	# Convert left subtree 
+	# and link to root 
+	if root.left: 
+		
+		# Convert the left subtree 
+		left = BTToDLLUtil(root.left) 
+
+		# Find inorder predecessor, After 
+		# this loop, left will point to the 
+		# inorder predecessor of root 
+		while left.right: 
+			left = left.right 
+
+		# Make root as next of predecessor 
+		left.right = root 
+		
+		# Make predecessor as 
+		# previous of root 
+		root.left = left 
+
+	# Convert the right subtree 
+	# and link to root 
+	if root.right: 
+		
+		# Convert the right subtree 
+		right = BTToDLLUtil(root.right) 
+
+		# Find inorder successor, After 
+		# this loop, right will point to 
+		# the inorder successor of root 
+		while right.left: 
+			right = right.left 
+
+		# Make root as previous 
+		# of successor 
+		right.left = root 
+		
+		# Make successor as 
+		# next of root 
+		root.right = right 
+
+	return root 
+
+def BTToDLL(root): 
+	if root is None: 
+		return root 
+
+	# Convert to doubly linked 
+	# list using BLLToDLLUtil 
+	root = BTToDLLUtil(root) 
+	
+	# We need pointer to left most 
+	# node which is head of the 
+	# constructed Doubly Linked list 
+	while root.left: 
+		root = root.left 
+
+	return root 
+
+def print_list(head): 
+	if head is None: 
+		return
+	while head: 
+		print(head.data, end = " ") 
+		head = head.right 
+
+if __name__ == '__main__': 
+	root = Node(10) 
+	root.left = Node(12) 
+	root.right = Node(15) 
+	root.left.left = Node(25) 
+	root.left.right = Node(30) 
+	root.right.left = Node(36) 
+
+	head = BTToDLL(root) 
+	print_list(head) 
