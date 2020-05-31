@@ -1,0 +1,25 @@
+# while both of them not reached to thier end
+# check lesser value is from which list, append and increment only that list
+# once any one of them reached to end append the other one directly
+class Node:
+	pass
+def merge(ll1,ll2): 
+	head=None
+	if ll1.val<ll2.val:
+		head=Node(ll1.val)
+		ll1=ll1.next
+	else:
+		head=Node(ll2.val)
+		ll2=ll2.next
+	copy=head
+	while(ll1!=None and ll2!=None):
+		if ll1.val<ll2.val:
+			head.next=Node(ll1.val)
+			ll1=ll1.next
+		else:
+			head.next=Node(ll2.val)
+			ll2=ll2.next
+		head=head.next
+	#check which is null and append the other to head and return copy.	
+
+
