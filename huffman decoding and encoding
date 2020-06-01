@@ -1,0 +1,5 @@
+first count frequecy of each charecter than enter data in tree
+such that the less frequent gets lower position in the tree
+and the most frequents are reacheble early
+now assign 0 while going left and 1 while going right till u reach the charecter
+once u reach u have its code in binary now u can encode the given string.
