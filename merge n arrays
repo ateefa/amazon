@@ -1,0 +1,26 @@
+def merge(a):
+	l1=a.pop()
+	l2=a.pop()
+	l3=[]
+	while(l1!=[] and l2!=[]):
+		if(l1[0]<l2[0]):
+			l3.append(l1.pop(0))
+		else:
+			l3.append(l2.pop(0))
+	if l1==[]:
+		l3.extend(l2)
+	else:
+		l3.extend(l1)			
+	a.append(l3)	
+	return a
+
+a= [[1, 8, 9, 14],
+[2, 4, 10, 12],
+[3,6, 7, 11],
+[13, 17, 19, 20],
+[5,14,18,21]]
+while(len(a)!=1):
+	for i in range(len(a)//2):
+		a=merge(a)
+print(a)
+
