@@ -1,0 +1,5 @@
+simply trace the matrix in o(n*n)
+and make two lists as row and col 
+append i in row and j in col if element a[i][j] is 0
+while printing check for i j in row and col print 0 if anyone present 
+else print one
