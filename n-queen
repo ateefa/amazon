@@ -1,0 +1,33 @@
+N=4
+def printsol(mat):
+	for i in range(N):
+		for j in range(N):
+			print(mat[i][j],end=' ')
+	print()
+
+def canPut(mat,col,row):
+	for i in range(col):
+		if mat[row][col]==1:
+			return False
+
+	for i,j in zip(range(row,-1,-1),range(col,-1,-1)):
+		if mat[i][j]==1:
+			return False
+
+	for i,j in zip(range(row,N,1),range(col,-1,-1)):
+		if mat[i][j]==1:
+			return False
+	return True
+
+def solve(mat,col):
+	if col>=N:
+		return True
+
+	for i in range(N):
+		if canPut(mat,i,col):
+			mat[i][col]=1
+
+			if solve(mat,col+1)==True:
+				return True
+				
+			mat[i][col]=False							
