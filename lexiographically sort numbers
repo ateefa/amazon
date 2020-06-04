@@ -1,0 +1,6 @@
+n=13
+print(sorted(range(1,n+1), key=str))
+alter
+loop from 1 to 9
+add 10 to i till number is less than n and append if true
+do seperately for series of 10's
