@@ -1,0 +1,49 @@
+class trieNode:
+	def __init__(self):
+		self.dic = dict()
+		self.bo = False
+
+class	trie:
+	def __init__(self):
+		self.root = self.getNode()
+
+	def getNode(self):
+		return trieNode()
+
+	def insert(self,string):
+		h=self.root
+		for i in string:
+			if i in h.dic.keys():
+				h=h.dic[i]
+			else:
+				h.dic[i]=self.getNode()
+		h.bo=True	
+
+	def printTrie(self,string):
+		h=self.root
+		for i in string:
+			print(h.dic[i])
+
+	def search(self,string):
+		h=self.root
+		i=0
+		while(i<len(string) and string[i] in h.dic):
+			h=h.dic[string[i]]
+		if h.bo==False:
+			print("not present")
+		else:print("present")
+
+	def prefixsearch(self,string):
+			h=self.root
+			i=0
+			while(i<len(string) and string[i] in h.dic):
+				h=h.dic[string[i]]
+			if h.bo==False:
+				print("present")
+			else:print("not present")
+
+
+t=trie()
+t.insert("iamintrie")
+t.search("iamnotintrie")
+t.prefixsearch("iam")
