@@ -1,0 +1,3 @@
+use xor on assci
+use dict
+loop for all charecter in a and b
