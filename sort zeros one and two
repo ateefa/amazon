@@ -1,0 +1,5 @@
+# in a single run count 0,1,2
+# make array out of it
+
+# another approch could be ignore one ,start from middle and run right till 2'pointer while 
+# swaping zero and two with thier pointer values 2'2 pointer starts from right and 0's from left
