@@ -1,0 +1,13 @@
+class Solution:
+    def __init__(self):
+        self.map = {}
+    def cloneGraph(self, node: 'Node') -> 'Node':
+        if not node:
+            return None
+        if node.val in self.map:
+            return self.map[node.val]
+        n_node = Node(node.val)
+        self.map[node.val] = n_node
+        for neighbor in node.neighbors:
+            n_node.neighbors.append(self.cloneGraph(neighbor))
+        return n_node
