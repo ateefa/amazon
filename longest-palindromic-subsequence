@@ -1,14 +1,93 @@
-public class Solution {
-    public String optimalDivision(int[] nums) {
-        if (nums.length == 1)
-            return nums[0] + "";
-        if (nums.length == 2)
-            return nums[0] + "/" + nums[1];
-        StringBuilder res = new StringBuilder(nums[0] + "/(" + nums[1]);
-        for (int i = 2; i < nums.length; i++) {
-            res.append("/" + nums[i]);
-        }
-        res.append(")");
-        return res.toString();
-    }
-}
+
+# def isPlindrome(string):
+# 	i=0
+# 	j=len(string)-1
+# 	while(j>i):
+# 		if string[i] != string[j]:
+# 			return False
+# 		else:
+# 			i+=1
+# 			j-=1
+# 	return True			
+# string="abab"
+# n=len(string)
+# mx=0
+# for i in range(n):
+# 	j=i
+# 	while(j<=n):
+# 		if isPlindrome(string[i:j]):
+# 			mx=max(mx,len(string[i:j]))
+# 		j+=1
+# print(mx)		
+
+#longest palindrome substring in n^2
+# Python program 
+
+import sys 
+
+# A utility function to print a 
+# substring str[low..high] 
+def printSubStr(st,low,high) : 
+	sys.stdout.write(st[low : high + 1]) 
+	sys.stdout.flush() 
+	return '' 
+def longestPalSubstr(st) : 
+	n = len(st) 
+	table = [[0 for x in range(n)] for y 
+						in range(n)] 
+	 
+	maxLength = 1
+	i = 0
+	while (i < n) : 
+		table[i][i] = True
+		i = i + 1
+	start = 0
+	i = 0
+	while i < n - 1 : 
+		if (st[i] == st[i + 1]) : 
+			table[i][i + 1] = True
+			start = i 
+			maxLength = 2
+		i = i + 1
+	k = 3
+	while k <= n : 
+		i = 0
+		while i < (n - k + 1) : 
+			j = i + k - 1 
+			if (table[i + 1][j - 1] and
+					st[i] == st[j]) : 
+				table[i][j] = True
+	
+				if (k > maxLength) : 
+					start = i 
+					maxLength = k 
+			i = i + 1
+		k = k + 1
+	print ("Longest palindrome substring is: ",printSubStr(st, start, 
+											start + maxLength - 1) )
+
+	return maxLength 
+
+st = "forgeeksskeegfor"
+l = longestPalSubstr(st) 
+print ("Length is:", l )
+
+# longest palindromic subsequence
+#DP
+#logest palindrome
+def lSeq(string):
+	n=len(string)
+	L=[[0 for x in range(n)] for x in range(n)]
+	for i in range(n):
+		L[i][i]=1
+	for i in range(2,n+1):
+			for j in range(n-i+1):
+				k=j+i-1
+				if string[j]==string[k] and i==2:
+					L[j][k]=2
+				elif string[j]==string[k]:
+					L[j][k]=L[i+1][j-1]+2
+				else:
+					L[k][j]=max(L[j][k-1],L[j+1][k])
+	return L[0][n-1]
+
