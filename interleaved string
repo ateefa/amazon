@@ -1,0 +1,5 @@
+# initialise each cell of the matrix as a list
+# now to start with append both combination of
+# first letters of both strings in every row
+# now for every next segment added in col append the above string at every pos
+# your last cell will have all possible combination
